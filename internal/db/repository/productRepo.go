@@ -45,7 +45,7 @@ func (p *productRepository) GetPopularProducts(ctx context.Context) ([]*models.P
 }
 
 func (p *productRepository) FindMany(ctx context.Context, search string) ([]*models.Product, error) {
-	query := `SELECT * FROM products WHERE LOWER(name) LIKE $1`
+	query := `SELECT * FROM products WHERE LOWER(name) LIKE $1 ORDER BY rating DESC`
 	parsedSearch := strings.ToLower(strings.TrimSpace(search))
 	rows, err := p.db.QueryxContext(ctx, query, "%"+parsedSearch+"%")
 	if err != nil {
