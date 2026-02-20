@@ -23,7 +23,7 @@ type Database struct {
 
 func NewParsedConfig() (Config, error) {
 	config := Config{}
-	if err := godotenv.Load(".env"); err != nil {
+	if err := godotenv.Load(); err != nil {
 		return config, fmt.Errorf("cannot load env, err:\n %+v", err)
 	}
 	if err := envconfig.Process("", &config); err != nil {
