@@ -15,11 +15,11 @@ type Config struct {
 }
 
 type Database struct {
-	Host     string `envocnfig:"DATABASE_HOST" required:"true"`
-	Port     string `envocnfig:"DATABASE_PORT" required:"true"`
-	Username string `envocnfig:"DATABASE_USERNAME" required:"true"`
-	Password string `envocnfig:"DATABASE_PASSWORD" required:"true"`
-	Name     string `envocnfig:"DATABASE_NAME" required:"true"`
+	Host     string `envconfig:"DATABASE_HOST" required:"true"`
+	Port     string `envconfig:"DATABASE_PORT" required:"true"`
+	Username string `envconfig:"DATABASE_USERNAME" required:"true"`
+	Password string `envconfig:"DATABASE_PASSWORD" required:"true"`
+	Name     string `envconfig:"DATABASE_NAME" required:"true"`
 }
 
 func NewParsedConfig() (Config, error) {
