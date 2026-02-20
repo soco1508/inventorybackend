@@ -1,0 +1,26 @@
+# Bỏ qua thư mục build, binary
+/bin/
+/build/
+/dist/
+*.exe
+*.dll
+*.so
+*.dylib
+*.out
+
+# Bỏ qua file config riêng tư
+.env
+Makefile
+
+# Go module cache
+/pkg/mod/
+/vendor/
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
