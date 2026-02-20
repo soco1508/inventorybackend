@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/kelseyhightower/envconfig"
@@ -23,11 +24,15 @@ type Database struct {
 
 func NewParsedConfig() (Config, error) {
 	config := Config{}
-	if err := godotenv.Load(); err != nil {
-		return config, fmt.Errorf("cannot load env, err:\n %+v", err)
+
+	if _, err := os.Stat(".env"); err == nil {
+		if err := godotenv.Load(); err != nil {
+			return config, fmt.Errorf("cannot load env: %w", err)
+		}
 	}
+
 	if err := envconfig.Process("", &config); err != nil {
-		return config, fmt.Errorf("cannot process env, err:\n %+v", err)
+		return config, fmt.Errorf("cannot process env: %w", err)
 	}
 	return config, nil
 }
